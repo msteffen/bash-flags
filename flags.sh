@@ -42,5 +42,6 @@ function PARSE_ALL_FLAGS {
     eval ${OPTS[0]:2}=${OPTS[1]}
     OPTS=( "${OPTS[@]:2}" )
   done
+  # return leftover args
   echo "${OPTS[@]:1}"
 }
