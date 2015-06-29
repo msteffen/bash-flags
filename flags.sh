@@ -7,8 +7,8 @@
 # source "flags.sh"
 #
 ### define variables that you'll use in your script, but that you want to be
-### flag-configurable (now these can be set by running this script with
-### --var_a="blah blah")
+### flag-configurable (now these can be set by running
+### ./this_script --var_a="blah blah")
 # MAKE_FLAG var_a "default value"
 # MAKE_FLAG var_b
 # PARSE_ALL_FLAGS $0 "${@}"
