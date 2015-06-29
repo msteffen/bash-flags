@@ -28,7 +28,7 @@ function MAKE_FLAG {
 
 function PARSE_ALL_FLAGS {
   # Fill default values
-  for cmd in "${__FILL_DEFAULTS__}"; do
+  for cmd in "${__FILL_DEFAULTS__[@]}"; do
     eval "${cmd}"
   done
 
