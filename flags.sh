@@ -9,8 +9,8 @@
 ### define variables that you'll use in your script, but that you want to be
 ### flag-configurable (now these can be set by running
 ### ./this_script --var_a="blah blah")
-# MAKE_FLAG var_a "default value"
-# MAKE_FLAG var_b
+# FLAG var_a "default value"
+# FLAG var_b
 # PARSE_ALL_FLAGS $0 "${@}"
 # ...
 # echo "Using the value in var_a, which is ${var_a}"
@@ -21,7 +21,7 @@
 __FLAGS__=()
 __FILL_DEFAULTS__=()
 
-function MAKE_FLAG {
+function FLAG {
   __FLAGS__+=("$1::")
   __FILL_DEFAULTS__+=("$1=\"$2\"")
 }
