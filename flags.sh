@@ -22,7 +22,7 @@ __FLAGS__=()
 __FILL_DEFAULTS__=()
 
 function FLAG {
-  __FLAGS__+=("$1::")
+  __FLAGS__+=("$1:")  # Two colons means "followed by an optional argument"
   __FILL_DEFAULTS__+=("$1=\"$2\"")
 }
 
@@ -39,9 +39,12 @@ function PARSE_ALL_FLAGS {
   # Read all args to PARSE_ALL_FLAGS and use them to set the flag values
   while [[ "${#OPTS[@]}" -gt 1 ]] && [[ "${OPTS[0]}" != '--' ]]; do
     # :2 removes the "--" from the front of the long arg's name
+    # Note that even though the arguments were optional, getopt will place an empty
+    # string in ${OPTS[1]}, so this command still works (assigns the empty string)
     eval ${OPTS[0]:2}=${OPTS[1]}
     OPTS=( "${OPTS[@]:2}" )
   done
+
   # return leftover args
   echo "${OPTS[@]:1}"
 }
