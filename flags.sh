@@ -1,21 +1,25 @@
 ###################################################
 # Small bash library for simplifying the use of flags in bash scrips
 ###################################################
-# Usage:
-# 
-### Include lib
+# Usage (in the script):
+###################################################
+# ## Include lib
 # source "flags.sh"
 #
-### define variables that you'll use in your script, but that you want to be
-### flag-configurable (now these can be set by running
-### ./this_script --var_a="blah blah")
-# FLAG var_a "default value"
-# FLAG var_b
+# ## define flag-settable variables that you'll use in your script
+# FLAG var_a
+# FLAG var_b "default value"
 # PARSE_ALL_FLAGS $0 "${@}"
-# ...
+#
+# ## Just use the variables by name
 # echo "Using the value in var_a, which is ${var_a}"
-###
+###################################################
+# Usage (on the command line):
+###################################################
+# ./my_script --var_a="blah blah" # don't set var_b to use its default value
+###################################################
 # TODO:
+###################################################
 # -Binary flags (--use_flux_capacitor and --nouse_flux_capacitor)
 
 __FLAGS__=()
@@ -40,7 +44,8 @@ function PARSE_ALL_FLAGS {
   while [[ "${#OPTS[@]}" -gt 1 ]] && [[ "${OPTS[0]}" != '--' ]]; do
     # :2 removes the "--" from the front of the long arg's name
     # Note that even though the arguments were optional, getopt will place an empty
-    # string in ${OPTS[1]}, so this command still works (assigns the empty string)
+    # string in ${OPTS[1]} if the flag is set without an argument (--var_a vs. --var_a=XYZ),
+    # so this command still works in that case (it assigns the empty string)
     eval ${OPTS[0]:2}=${OPTS[1]}
     OPTS=( "${OPTS[@]:2}" )
   done
