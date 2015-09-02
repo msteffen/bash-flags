@@ -2,25 +2,20 @@
 # Small bash library for simplifying the use of flags in bash scrips
 ###################################################
 # Usage (in the script):
-###################################################
-# ## Include lib
-# source "flags.sh"
+#   source "flags.sh"
 #
-# ## define flag-settable variables that you'll use in your script
-# FLAG var_a
-# FLAG var_b "default value"
-# PARSE_ALL_FLAGS $0 "${@}"
+#   FLAG var_a
+#   FLAG var_b "default value"
+#   PARSE_ALL_FLAGS $0 "${@}"  # Pass binary name and flags to the library
 #
-# ## Just use the variables by name
-# echo "Using the value in var_a, which is ${var_a}"
+#   echo "Now I can refer to the flags, which were: ${var_a} and ${var_b}"
 ###################################################
 # Usage (on the command line):
-###################################################
-# ./my_script --var_a="blah blah" # don't set var_b to use its default value
+#   $ ./my_script --var_a="blah blah" # don't set var_b to use its default value
+#   Now I can refer to the flags which were blah blah and default value
 ###################################################
 # TODO:
-###################################################
-# -Binary flags (--use_flux_capacitor and --nouse_flux_capacitor)
+#   -Binary flags (--use_flux_capacitor and --nouse_flux_capacitor)
 
 __FLAGS__=()
 __FILL_DEFAULTS__=()
