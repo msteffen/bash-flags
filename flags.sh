@@ -16,6 +16,7 @@
 ###################################################
 # TODO:
 #   -Binary flags (--use_flux_capacitor and --nouse_flux_capacitor)
+#   -Get rid of python command below
 
 __FLAGS__=()
 __FILL_DEFAULTS__=()
